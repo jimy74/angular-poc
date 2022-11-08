@@ -1,0 +1,25 @@
+.menu {
+    background: #202124;
+    height: 1.6em;
+    margin: 0px;
+}
+
+.menu-element {
+    display: inline;
+    a {
+        color: aliceblue;
+        text-decoration: none;
+        margin-left: 0.85em;
+        padding: 0px;
+
+    }
+    .active {
+        color: rgb(148, 205, 255);
+        padding-bottom: 1px;
+        border-bottom: 1px solid rgb(148, 205, 255);
+    }
+    a:hover {
+        padding-bottom: 1px;
+        border-bottom: 1px solid aliceblue;
+    }
+}
