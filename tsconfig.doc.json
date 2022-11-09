@@ -1,0 +1,4 @@
+/* See the doc on https://compodoc.app/ for more information. */
+{
+  "include": ["src/**/*.ts"]
+}

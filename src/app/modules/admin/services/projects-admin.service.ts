@@ -65,7 +65,24 @@ export class ProjectAdminService {
         return this.http.post<Project>(this.targetResourceUrl, project, httpOptions);
     }
 
-                /**
+        /**
+     * PUT a project to the server CoreAPI
+     * @returns Project 
+     */
+         updateProject(project: Project ): Observable<Project> {
+            // @ts-ignore
+            window.Buffer = window.Buffer || require('buffer').Buffer;
+    
+            const httpOptions = {
+                headers: new HttpHeaders({
+                    'Content-Type':  'application/json',
+                    'Authorization': 'Basic ' + window.Buffer.from('user:1234').toString('base64') //TODO: improve this, not hardcode, put it at this app level and transmit it
+                })
+            };
+            return this.http.put<Project>(this.targetResourceUrl + "/" + project.id, project, httpOptions);
+        }
+
+     /**
      * DELETE a project to the server CoreAPI
      * @returns Project 
      */

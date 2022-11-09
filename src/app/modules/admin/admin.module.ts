@@ -8,14 +8,25 @@ import { ProjectAdminService } from './services/projects-admin.service';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-//import { ProjectsAdminVue } from './components/projects-admin/projects-admin-vue.component';
+import { ProjectsAdminVueComponent } from './components/projects-admin/childs-dumb-components/projects-admin-vue.component';
+import { ProjectsAdminCreatorComponent } from './components/projects-admin/childs-dumb-components/projects-admin-creator.component';
+import { ProjectsAdminDetailComponent } from './components/projects-admin/childs-dumb-components/projects-admin-detail.component';
+import { ProjectAdminAttributeCreatorComponent } from './components/projects-admin/childs-dumb-components/projects-admin-attribute-creator.component';
+import { AttributesAdminService } from './services/attributes-admin.service';
+import { SearchFilterPipe } from './pipes/search-filter.pipe';
+import { FilterSearchComponent } from './components/filter-search/filter-search.component';
 
 @NgModule({
   declarations: [
     AttributesAdminComponent,
     ProjectsAdminComponent,
-   // ProjectsAdminVue,
-    SettingsComponent
+    ProjectsAdminVueComponent,
+    ProjectsAdminCreatorComponent,
+    ProjectAdminAttributeCreatorComponent,
+    ProjectsAdminDetailComponent,
+    SettingsComponent,
+    SearchFilterPipe,
+    FilterSearchComponent
   ],
   imports: [
     BrowserModule, //default module needed anyway
@@ -27,8 +38,12 @@ import { FormsModule } from '@angular/forms';
   exports: [
     AttributesAdminComponent,
     ProjectsAdminComponent,
+    ProjectsAdminVueComponent,
+    ProjectsAdminCreatorComponent,
+    ProjectAdminAttributeCreatorComponent,
+    ProjectsAdminDetailComponent,
     SettingsComponent,
   ],
-  providers: [ProjectAdminService] //Inject the services to the components constructor (if they have declared it) of this module
+  providers: [ProjectAdminService, AttributesAdminService] //Inject the services to the components constructor (if they have declared it) of this module
 })
 export class AdminModule {}

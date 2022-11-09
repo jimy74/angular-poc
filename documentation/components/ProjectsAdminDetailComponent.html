@@ -1,0 +1,1160 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>admin-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">admin-app documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  ProjectsAdminDetailComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/modules/admin/components/projects-admin/childs-dumb-components/projects-admin-detail.component.ts</code>
+</p>
+
+
+
+
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>projects-admin-detail</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">template</td>
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div id&#x3D;&quot;projects-admin-detail&quot; *ngIf&#x3D;&quot;selectedProject&quot;&gt;
+    &lt;h1&gt;
+      Detail for project ID N°{{ selectedProject.id }}
+      &lt;input
+        type&#x3D;&quot;button&quot;
+        (click)&#x3D;&quot;toggleEditMode()&quot;
+        [value]&#x3D;&quot;isEditMode ? &#x27;Save&#x27; : &#x27;Edit&#x27;&quot;
+      /&gt;
+    &lt;/h1&gt;
+    &lt;table&gt;
+      &lt;tr&gt;
+        &lt;th&gt;Id&lt;/th&gt;
+        &lt;td&gt;{{ selectedProject.id }}&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;th&gt;Name&lt;/th&gt;
+        &lt;td&gt;
+          &lt;form #form&#x3D;&quot;ngForm&quot;&gt;
+            &lt;input
+              name&#x3D;&quot;name&quot;
+              #name&#x3D;&quot;ngModel&quot;
+              type&#x3D;&quot;text&quot;
+              [disabled]&#x3D;&quot;!isEditMode&quot;
+              [(ngModel)]&#x3D;&quot;selectedProject.name&quot;
+            /&gt;
+          &lt;/form&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;th&gt;Attributes&lt;/th&gt;
+        &lt;td&gt;
+          &lt;table id&#x3D;&quot;table-project-detail-attributes&quot;&gt;
+            &lt;tr&gt;
+              &lt;th&gt;Id&lt;/th&gt;
+              &lt;th&gt;Name&lt;/th&gt;
+              &lt;th&gt;Type&lt;/th&gt;
+              &lt;th&gt;Value&lt;/th&gt;
+            &lt;/tr&gt;
+            &lt;tr *ngFor&#x3D;&quot;let attribute of selectedProject.attributes&quot;&gt;
+              &lt;td&gt;
+                {{ attribute.id &#x3D;&#x3D; -1 ? &quot;New&quot; : attribute.id }}
+                &lt;input
+                  name&#x3D;&quot;attrId&quot;
+                  #attrId&#x3D;&quot;ngModel&quot;
+                  type&#x3D;&quot;hidden&quot;
+                  [(ngModel)]&#x3D;&quot;attribute.id&quot;
+                /&gt;
+                &lt;input
+                  *ngIf&#x3D;&quot;isEditMode&quot;
+                  type&#x3D;&quot;button&quot;
+                  value&#x3D;&quot;Remove&quot;
+                  (click)&#x3D;&quot;removeAttribute(attribute.id)&quot;
+                /&gt;
+              &lt;/td&gt;
+              &lt;td&gt;
+                &lt;input
+                  name&#x3D;&quot;attrName&quot;
+                  #attrName&#x3D;&quot;ngModel&quot;
+                  type&#x3D;&quot;text&quot;
+                  [disabled]&#x3D;&quot;!isEditMode&quot;
+                  [(ngModel)]&#x3D;&quot;attribute.name&quot;
+                /&gt;
+              &lt;/td&gt;
+              &lt;td&gt;
+                &lt;input
+                  name&#x3D;&quot;attrValue&quot;
+                  #attrValue&#x3D;&quot;ngModel&quot;
+                  [type]&#x3D;&quot;getValueInputType(attribute.valueType)&quot;
+                  [disabled]&#x3D;&quot;!isEditMode&quot;
+                  [(ngModel)]&#x3D;&quot;attribute.value&quot;
+                  [value]&#x3D;&quot;attribute.value&quot;
+                  (change)&#x3D;&quot;attribute.valueType &#x3D;&#x3D; &#x27;BOOLEAN&#x27; ? editProjectCheckboxChange($event, attribute.id) : undefined&quot;
+                  [checked]&#x3D;&quot;attribute.valueType &#x3D;&#x3D; &#x27;BOOLEAN&#x27; &amp;&amp; attribute.value &#x3D;&#x3D; &#x27;1&#x27;? &#x27;checked&#x27; : &#x27;&#x27;&quot;
+                /&gt;
+                &lt;!-- Note: change and check only useful for checkboxes (attributes of type BOOLEAN), as I did a custom implementation --&gt;
+              &lt;/td&gt;
+              &lt;td&gt;
+                &lt;select
+                  name&#x3D;&quot;attrValueType&quot;
+                  #attrValueType&#x3D;&quot;ngModel&quot;
+                  [disabled]&#x3D;&quot;!isEditMode&quot;
+                  [(ngModel)]&#x3D;&quot;attribute.valueType&quot;
+                  (change)&#x3D;&quot;clearAttributeValue(attribute.id)&quot;
+                &gt;
+                  &lt;option
+                    *ngFor&#x3D;&quot;let attributeType of attributeTypes&quot;
+                    [value]&#x3D;&quot;attributeType&quot;
+                  &gt;
+                    {{ attributeType }}
+                  &lt;/option&gt;
+                &lt;/select&gt;
+              &lt;/td&gt;
+            &lt;/tr&gt;
+          &lt;/table&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr *ngIf&#x3D;&#x27;isEditMode&#x27;&gt;
+        &lt;th&gt;New Attribute(s)&lt;/th&gt;
+        &lt;projects-admin-attribute-creator (newAttributeAddedEvent)&#x3D;&#x27;addAttributeToNewProject($event)&#x27;&gt;
+        &lt;/projects-admin-attribute-creator&gt;
+    &lt;/tr&gt;
+    &lt;/table&gt;
+  &lt;/div&gt;
+</code></pre></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                <a href="#attributeTypes" >attributeTypes</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                <a href="#isEditMode" >isEditMode</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                <a href="#addAttributeToNewProject" >addAttributeToNewProject</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                <a href="#clearAttributeValue" >clearAttributeValue</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                <a href="#editProjectCheckboxChange" >editProjectCheckboxChange</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                <a href="#getValueInputType" >getValueInputType</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                <a href="#removeAttribute" >removeAttribute</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                <a href="#toggleEditMode" >toggleEditMode</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#selectedProject" >selectedProject</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#updateProjectEvent" >updateProjectEvent</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor()</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="126" class="link-to-prism">src/app/modules/admin/components/projects-admin/childs-dumb-components/projects-admin-detail.component.ts:126</a></div>
+                            </td>
+                        </tr>
+
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="selectedProject"></a>
+                        <b>selectedProject</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Project.html" target="_self" >Project | undefined</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>undefined</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="119" class="link-to-prism">src/app/modules/admin/components/projects-admin/childs-dumb-components/projects-admin-detail.component.ts:119</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+    <section>
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="updateProjectEvent"></a>
+                        <b>updateProjectEvent</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Project.html" target="_self" >EventEmitter&lt;Project&gt;</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="126" class="link-to-prism">src/app/modules/admin/components/projects-admin/childs-dumb-components/projects-admin-detail.component.ts:126</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="addAttributeToNewProject"></a>
+                    <span class="name">
+                        <span class="modifier">Protected</span>
+                        <span ><b>addAttributeToNewProject</b></span>
+                        <a href="#addAttributeToNewProject"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>addAttributeToNewProject(newAttribute: <a href="../interfaces/NewAttribute.html" target="_self">NewAttribute</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="178"
+                            class="link-to-prism">src/app/modules/admin/components/projects-admin/childs-dumb-components/projects-admin-detail.component.ts:178</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>newAttribute</td>
+                                    <td>
+                                                <code><a href="../interfaces/NewAttribute.html" target="_self" >NewAttribute</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="clearAttributeValue"></a>
+                    <span class="name">
+                        <span class="modifier">Protected</span>
+                        <span ><b>clearAttributeValue</b></span>
+                        <a href="#clearAttributeValue"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>clearAttributeValue(attributeId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="165"
+                            class="link-to-prism">src/app/modules/admin/components/projects-admin/childs-dumb-components/projects-admin-detail.component.ts:165</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>attributeId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="editProjectCheckboxChange"></a>
+                    <span class="name">
+                        <span class="modifier">Protected</span>
+                        <span ><b>editProjectCheckboxChange</b></span>
+                        <a href="#editProjectCheckboxChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>editProjectCheckboxChange(event: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, attributeId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="152"
+                            class="link-to-prism">src/app/modules/admin/components/projects-admin/childs-dumb-components/projects-admin-detail.component.ts:152</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>event</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>attributeId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getValueInputType"></a>
+                    <span class="name">
+                        <span class="modifier">Protected</span>
+                        <span ><b>getValueInputType</b></span>
+                        <a href="#getValueInputType"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getValueInputType(attributeType: <a href="../interfaces/Attribute.html" target="_self">AttributeType</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="185"
+                            class="link-to-prism">src/app/modules/admin/components/projects-admin/childs-dumb-components/projects-admin-detail.component.ts:185</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>attributeType</td>
+                                    <td>
+                                                <code><a href="../interfaces/Attribute.html" target="_self" >AttributeType</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="removeAttribute"></a>
+                    <span class="name">
+                        <span class="modifier">Protected</span>
+                        <span ><b>removeAttribute</b></span>
+                        <a href="#removeAttribute"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>removeAttribute(attributeIdToRemove: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="138"
+                            class="link-to-prism">src/app/modules/admin/components/projects-admin/childs-dumb-components/projects-admin-detail.component.ts:138</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>attributeIdToRemove</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggleEditMode"></a>
+                    <span class="name">
+                        <span class="modifier">Protected</span>
+                        <span ><b>toggleEditMode</b></span>
+                        <a href="#toggleEditMode"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>toggleEditMode()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="130"
+                            class="link-to-prism">src/app/modules/admin/components/projects-admin/childs-dumb-components/projects-admin-detail.component.ts:130</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="attributeTypes"></a>
+                    <span class="name">
+                            <span class="modifier">Protected</span>
+                        <span ><b>attributeTypes</b></span>
+                        <a href="#attributeTypes"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>Object.keys(AttributeType)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="123" class="link-to-prism">src/app/modules/admin/components/projects-admin/childs-dumb-components/projects-admin-detail.component.ts:123</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isEditMode"></a>
+                    <span class="name">
+                            <span class="modifier">Protected</span>
+                        <span ><b>isEditMode</b></span>
+                        <a href="#isEditMode"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="121" class="link-to-prism">src/app/modules/admin/components/projects-admin/childs-dumb-components/projects-admin-detail.component.ts:121</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, EventEmitter, Input, OnInit, Output } from &quot;@angular/core&quot;;
+import { AttributeType } from &quot;src/app/models/attribute-types.enum&quot;;
+import { Attribute, NewAttribute } from &quot;src/app/models/attribute.interface&quot;;
+import { Project } from &quot;src/app/models/project.interface&quot;;
+import { getDefaultValueByAttributeType, getTodayDateFormatted, getValueInputType } from &quot;../projects-admin.utility&quot;;
+
+@Component({
+    selector: &#x27;projects-admin-detail&#x27;,
+    styleUrls: [],
+    template: &#x60;
+    &lt;div id&#x3D;&quot;projects-admin-detail&quot; *ngIf&#x3D;&quot;selectedProject&quot;&gt;
+        &lt;h1&gt;
+          Detail for project ID N°{{ selectedProject.id }}
+          &lt;input
+            type&#x3D;&quot;button&quot;
+            (click)&#x3D;&quot;toggleEditMode()&quot;
+            [value]&#x3D;&quot;isEditMode ? &#x27;Save&#x27; : &#x27;Edit&#x27;&quot;
+          /&gt;
+        &lt;/h1&gt;
+        &lt;table&gt;
+          &lt;tr&gt;
+            &lt;th&gt;Id&lt;/th&gt;
+            &lt;td&gt;{{ selectedProject.id }}&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;th&gt;Name&lt;/th&gt;
+            &lt;td&gt;
+              &lt;form #form&#x3D;&quot;ngForm&quot;&gt;
+                &lt;input
+                  name&#x3D;&quot;name&quot;
+                  #name&#x3D;&quot;ngModel&quot;
+                  type&#x3D;&quot;text&quot;
+                  [disabled]&#x3D;&quot;!isEditMode&quot;
+                  [(ngModel)]&#x3D;&quot;selectedProject.name&quot;
+                /&gt;
+              &lt;/form&gt;
+            &lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;th&gt;Attributes&lt;/th&gt;
+            &lt;td&gt;
+              &lt;table id&#x3D;&quot;table-project-detail-attributes&quot;&gt;
+                &lt;tr&gt;
+                  &lt;th&gt;Id&lt;/th&gt;
+                  &lt;th&gt;Name&lt;/th&gt;
+                  &lt;th&gt;Type&lt;/th&gt;
+                  &lt;th&gt;Value&lt;/th&gt;
+                &lt;/tr&gt;
+                &lt;tr *ngFor&#x3D;&quot;let attribute of selectedProject.attributes&quot;&gt;
+                  &lt;td&gt;
+                    {{ attribute.id &#x3D;&#x3D; -1 ? &quot;New&quot; : attribute.id }}
+                    &lt;input
+                      name&#x3D;&quot;attrId&quot;
+                      #attrId&#x3D;&quot;ngModel&quot;
+                      type&#x3D;&quot;hidden&quot;
+                      [(ngModel)]&#x3D;&quot;attribute.id&quot;
+                    /&gt;
+                    &lt;input
+                      *ngIf&#x3D;&quot;isEditMode&quot;
+                      type&#x3D;&quot;button&quot;
+                      value&#x3D;&quot;Remove&quot;
+                      (click)&#x3D;&quot;removeAttribute(attribute.id)&quot;
+                    /&gt;
+                  &lt;/td&gt;
+                  &lt;td&gt;
+                    &lt;input
+                      name&#x3D;&quot;attrName&quot;
+                      #attrName&#x3D;&quot;ngModel&quot;
+                      type&#x3D;&quot;text&quot;
+                      [disabled]&#x3D;&quot;!isEditMode&quot;
+                      [(ngModel)]&#x3D;&quot;attribute.name&quot;
+                    /&gt;
+                  &lt;/td&gt;
+                  &lt;td&gt;
+                    &lt;input
+                      name&#x3D;&quot;attrValue&quot;
+                      #attrValue&#x3D;&quot;ngModel&quot;
+                      [type]&#x3D;&quot;getValueInputType(attribute.valueType)&quot;
+                      [disabled]&#x3D;&quot;!isEditMode&quot;
+                      [(ngModel)]&#x3D;&quot;attribute.value&quot;
+                      [value]&#x3D;&quot;attribute.value&quot;
+                      (change)&#x3D;&quot;attribute.valueType &#x3D;&#x3D; &#x27;BOOLEAN&#x27; ? editProjectCheckboxChange($event, attribute.id) : undefined&quot;
+                      [checked]&#x3D;&quot;attribute.valueType &#x3D;&#x3D; &#x27;BOOLEAN&#x27; &amp;&amp; attribute.value &#x3D;&#x3D; &#x27;1&#x27;? &#x27;checked&#x27; : &#x27;&#x27;&quot;
+                    /&gt;
+                    &lt;!-- Note: change and check only useful for checkboxes (attributes of type BOOLEAN), as I did a custom implementation --&gt;
+                  &lt;/td&gt;
+                  &lt;td&gt;
+                    &lt;select
+                      name&#x3D;&quot;attrValueType&quot;
+                      #attrValueType&#x3D;&quot;ngModel&quot;
+                      [disabled]&#x3D;&quot;!isEditMode&quot;
+                      [(ngModel)]&#x3D;&quot;attribute.valueType&quot;
+                      (change)&#x3D;&quot;clearAttributeValue(attribute.id)&quot;
+                    &gt;
+                      &lt;option
+                        *ngFor&#x3D;&quot;let attributeType of attributeTypes&quot;
+                        [value]&#x3D;&quot;attributeType&quot;
+                      &gt;
+                        {{ attributeType }}
+                      &lt;/option&gt;
+                    &lt;/select&gt;
+                  &lt;/td&gt;
+                &lt;/tr&gt;
+              &lt;/table&gt;
+            &lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr *ngIf&#x3D;&#x27;isEditMode&#x27;&gt;
+            &lt;th&gt;New Attribute(s)&lt;/th&gt;
+            &lt;projects-admin-attribute-creator (newAttributeAddedEvent)&#x3D;&#x27;addAttributeToNewProject($event)&#x27;&gt;
+            &lt;/projects-admin-attribute-creator&gt;
+        &lt;/tr&gt;
+        &lt;/table&gt;
+      &lt;/div&gt;
+    &#x60;
+})
+export class ProjectsAdminDetailComponent {
+
+    @Input()
+    selectedProject: Project | undefined &#x3D; undefined;
+
+    protected isEditMode &#x3D; false;
+
+    protected attributeTypes: string[] &#x3D; Object.keys(AttributeType);
+
+    @Output()
+    updateProjectEvent: EventEmitter&lt;Project&gt; &#x3D; new EventEmitter&lt;Project&gt;();
+
+    constructor() {}
+
+    protected toggleEditMode() {
+        if (this.isEditMode &amp;&amp; this.selectedProject !&#x3D; undefined) {
+            this.updateProjectEvent.emit(this.selectedProject);
+                this.selectedProject.attributes &#x3D; this.selectedProject.attributes;
+        }
+        this.isEditMode &#x3D; !this.isEditMode;
+    }
+
+    protected removeAttribute(attributeIdToRemove: number) {
+        if (
+          this.selectedProject &amp;&amp;
+          confirm(
+            &#x60;Remove the attribute ${attributeIdToRemove} from project ${this.selectedProject.id}?&#x60;
+          )
+        ) {
+          this.selectedProject.attributes &#x3D; this.selectedProject.attributes.filter(
+            (attribute) &#x3D;&gt; attribute.id !&#x3D; attributeIdToRemove
+          );
+        }
+    }
+
+    //checkbox are not exactly conform with ngModel so I decided to handle it by myself here
+    protected editProjectCheckboxChange(event: any, attributeId: number) {
+        if (this.selectedProject) {
+            this.selectedProject.attributes &#x3D; this.selectedProject.attributes.map(
+                (attribute) &#x3D;&gt; {
+                if (attribute.id &#x3D;&#x3D; attributeId) {
+                    attribute.value &#x3D;  event.target.checked ? &#x27;1&#x27; : &#x27;0&#x27;;
+                }
+                return attribute;
+                }
+            )
+        }
+      }
+
+    protected clearAttributeValue(attributeId: number) {
+        if (this.selectedProject) {
+          this.selectedProject.attributes &#x3D; this.selectedProject.attributes.map(
+            (attribute) &#x3D;&gt; {
+              if (attribute.id &#x3D;&#x3D; attributeId) {
+                attribute.value &#x3D; getDefaultValueByAttributeType(attribute.valueType);
+              }
+              return attribute;
+            }
+          )
+        }
+    }
+
+    protected addAttributeToNewProject(newAttribute: NewAttribute) {
+        if (this.selectedProject) {           
+            const attributeWithIdToBeGenerated: Attribute &#x3D; {id: -1, ...newAttribute};
+            this.selectedProject.attributes.push(Object.assign({}, attributeWithIdToBeGenerated));
+        }
+    }
+
+    protected getValueInputType(attributeType: AttributeType) {
+        return getValueInputType(attributeType);
+    }
+}</code></pre>
+    </div>
+
+
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div id="projects-admin-detail" *ngIf="selectedProject">    <h1>      Detail for project ID N°{{ selectedProject.id }}      <input        type="button"        (click)="toggleEditMode()"        [value]="isEditMode ? \'Save\' : \'Edit\'"      />    </h1>    <table>      <tr>        <th>Id</th>        <td>{{ selectedProject.id }}</td>      </tr>      <tr>        <th>Name</th>        <td>          <form #form="ngForm">            <input              name="name"              #name="ngModel"              type="text"              [disabled]="!isEditMode"              [(ngModel)]="selectedProject.name"            />          </form>        </td>      </tr>      <tr>        <th>Attributes</th>        <td>          <table id="table-project-detail-attributes">            <tr>              <th>Id</th>              <th>Name</th>              <th>Type</th>              <th>Value</th>            </tr>            <tr *ngFor="let attribute of selectedProject.attributes">              <td>                {{ attribute.id == -1 ? "New" : attribute.id }}                <input                  name="attrId"                  #attrId="ngModel"                  type="hidden"                  [(ngModel)]="attribute.id"                />                <input                  *ngIf="isEditMode"                  type="button"                  value="Remove"                  (click)="removeAttribute(attribute.id)"                />              </td>              <td>                <input                  name="attrName"                  #attrName="ngModel"                  type="text"                  [disabled]="!isEditMode"                  [(ngModel)]="attribute.name"                />              </td>              <td>                <input                  name="attrValue"                  #attrValue="ngModel"                  [type]="getValueInputType(attribute.valueType)"                  [disabled]="!isEditMode"                  [(ngModel)]="attribute.value"                  [value]="attribute.value"                  (change)="attribute.valueType == \'BOOLEAN\' ? editProjectCheckboxChange($event, attribute.id) : undefined"                  [checked]="attribute.valueType == \'BOOLEAN\' && attribute.value == \'1\'? \'checked\' : \'\'"                />                <!-- Note: change and check only useful for checkboxes (attributes of type BOOLEAN), as I did a custom implementation -->              </td>              <td>                <select                  name="attrValueType"                  #attrValueType="ngModel"                  [disabled]="!isEditMode"                  [(ngModel)]="attribute.valueType"                  (change)="clearAttributeValue(attribute.id)"                >                  <option                    *ngFor="let attributeType of attributeTypes"                    [value]="attributeType"                  >                    {{ attributeType }}                  </option>                </select>              </td>            </tr>          </table>        </td>      </tr>      <tr *ngIf=\'isEditMode\'>        <th>New Attribute(s)</th>        <projects-admin-attribute-creator (newAttributeAddedEvent)=\'addAttributeToNewProject($event)\'>        </projects-admin-attribute-creator>    </tr>    </table>  </div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AttributesAdminComponent', 'selector': 'attributes-admin'},{'name': 'HomeComponent', 'selector': 'home'},{'name': 'MenuComponent', 'selector': 'menu'},{'name': 'NotFoundComponent', 'selector': 'not-found'},{'name': 'ProjectAdminAttributeCreatorComponent', 'selector': 'projects-admin-attribute-creator'},{'name': 'ProjectsAdminComponent', 'selector': 'projects-admin'},{'name': 'ProjectsAdminCreatorComponent', 'selector': 'projects-admin-creator'},{'name': 'ProjectsAdminDetailComponent', 'selector': 'projects-admin-detail'},{'name': 'ProjectsAdminVueComponent', 'selector': 'projects-admin-vue'},{'name': 'SettingsComponent', 'selector': 'settings'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'ProjectsAdminDetailComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'ProjectsAdminDetailComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

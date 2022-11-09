@@ -9,6 +9,7 @@ import { HomeComponent } from './components/home/home.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AdminModule } from './modules/admin/admin.module';
 import { FormsModule } from '@angular/forms';
+import { SearchFilterPipe } from './modules/admin/pipes/search-filter.pipe';
 
 @NgModule({
   declarations: [
