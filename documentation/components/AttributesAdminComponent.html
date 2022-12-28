@@ -67,6 +67,12 @@
 
 
 
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
 
 
 <section>
@@ -102,12 +108,13 @@
   &lt;p&gt;Here you can have a global overview on every attributes.&lt;/p&gt;
 &lt;/div&gt;
 &lt;h2&gt;List of all attributes&lt;/h2&gt;
+&lt;filter-search [searchText]&#x3D;&#x27;searchText&#x27; (searchTextChangeEvent)&#x3D;&#x27;onSearchTextChange($event)&#x27;&gt;&lt;/filter-search&gt;
 &lt;table&gt;
   &lt;tr&gt;
-    &lt;th&gt;Id&lt;/th&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Value&lt;/th&gt;&lt;th&gt;Type&lt;/th&gt;&lt;th&gt;Linked Projects&lt;/th&gt;
+    &lt;th&gt;Id&lt;/th&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Value&lt;/th&gt;&lt;th&gt;Type&lt;/th&gt;
   &lt;/tr&gt;
-  &lt;tr *ngFor&#x3D;&#x27;let attribute of attributes&#x27;&gt;
-
+  &lt;tr *ngFor&#x3D;&#x27;let attribute of attributes | searchFilter: searchText&#x27;&gt;
+  &lt;td&gt;{{attribute.id}}&lt;/td&gt;&lt;td&gt;{{attribute.name}}&lt;/td&gt;&lt;td&gt;{{attribute.value}}&lt;/td&gt;&lt;td&gt;{{attribute.valueType}}&lt;/td&gt;
   &lt;/tr&gt;
 &lt;/table&gt;
 &lt;router-outlet&gt;&lt;/router-outlet&gt;
@@ -142,10 +149,32 @@
                                     <span class="modifier">Protected</span>
                                 <a href="#attributes" >attributes</a>
                             </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                <a href="#searchText" >searchText</a>
+                            </li>
                         </ul>
                     </td>
                 </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                <a href="#onSearchTextChange" >onSearchTextChange</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
 
 
 
@@ -166,7 +195,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/modules/admin/components/attributes-admin/attributes-admin.component.ts:28</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/modules/admin/components/attributes-admin/attributes-admin.component.ts:31</a></div>
                             </td>
                         </tr>
 
@@ -232,7 +261,120 @@
 
 
 
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
 
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="39"
+                            class="link-to-prism">src/app/modules/admin/components/attributes-admin/attributes-admin.component.ts:39</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onSearchTextChange"></a>
+                    <span class="name">
+                        <span class="modifier">Protected</span>
+                        <span ><b>onSearchTextChange</b></span>
+                        <a href="#onSearchTextChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>onSearchTextChange(seachTextInputValue: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="45"
+                            class="link-to-prism">src/app/modules/admin/components/attributes-admin/attributes-admin.component.ts:45</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>seachTextInputValue</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
     <section>
     
     <h3 id="inputs">
@@ -263,7 +405,39 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/modules/admin/components/attributes-admin/attributes-admin.component.ts:28</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/modules/admin/components/attributes-admin/attributes-admin.component.ts:29</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="searchText"></a>
+                    <span class="name">
+                            <span class="modifier">Protected</span>
+                        <span ><b>searchText</b></span>
+                        <a href="#searchText"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/modules/admin/components/attributes-admin/attributes-admin.component.ts:31</a></div>
                         </td>
                     </tr>
 
@@ -276,7 +450,7 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
 import { Router, ActivatedRoute } from &#x27;@angular/router&#x27;;
 import { Attribute } from &#x27;src/app/models/attribute.interface&#x27;;
 import { AttributesAdminService } from &#x27;../../services/attributes-admin.service&#x27;;
@@ -290,26 +464,39 @@ import { AttributesAdminService } from &#x27;../../services/attributes-admin.ser
       &lt;p&gt;Here you can have a global overview on every attributes.&lt;/p&gt;
     &lt;/div&gt;
     &lt;h2&gt;List of all attributes&lt;/h2&gt;
+    &lt;filter-search [searchText]&#x3D;&#x27;searchText&#x27; (searchTextChangeEvent)&#x3D;&#x27;onSearchTextChange($event)&#x27;&gt;&lt;/filter-search&gt;
     &lt;table&gt;
       &lt;tr&gt;
-        &lt;th&gt;Id&lt;/th&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Value&lt;/th&gt;&lt;th&gt;Type&lt;/th&gt;&lt;th&gt;Linked Projects&lt;/th&gt;
+        &lt;th&gt;Id&lt;/th&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Value&lt;/th&gt;&lt;th&gt;Type&lt;/th&gt;
       &lt;/tr&gt;
-      &lt;tr *ngFor&#x3D;&#x27;let attribute of attributes&#x27;&gt;
-
+      &lt;tr *ngFor&#x3D;&#x27;let attribute of attributes | searchFilter: searchText&#x27;&gt;
+      &lt;td&gt;{{attribute.id}}&lt;/td&gt;&lt;td&gt;{{attribute.name}}&lt;/td&gt;&lt;td&gt;{{attribute.value}}&lt;/td&gt;&lt;td&gt;{{attribute.valueType}}&lt;/td&gt;
       &lt;/tr&gt;
     &lt;/table&gt;
     &lt;router-outlet&gt;&lt;/router-outlet&gt;
   &#x60;,
 })
-export class AttributesAdminComponent {
+export class AttributesAdminComponent implements OnInit {
 
   protected attributes: Attribute[] &#x3D; [];
+
+  protected searchText: string &#x3D; &#x27;&#x27;;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private attributesAdminService: AttributesAdminService
   ) {}
+
+  ngOnInit(): void {
+    this.attributesAdminService.getAttributes().subscribe(attributes &#x3D;&gt; {
+      this.attributes &#x3D; attributes;
+    });
+  }
+
+  protected onSearchTextChange(seachTextInputValue: string) {
+    this.searchText &#x3D; seachTextInputValue;
+  }
 
 }
 </code></pre>
@@ -348,8 +535,8 @@ export class AttributesAdminComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div id="attributes-admin">  <h1>Attributes administration dashboard</h1>  <p>Here you can have a global overview on every attributes.</p></div><h2>List of all attributes</h2><table>  <tr>    <th>Id</th><th>Name</th><th>Value</th><th>Type</th><th>Linked Projects</th>  </tr>  <tr *ngFor=\'let attribute of attributes\'>  </tr></table><router-outlet></router-outlet></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AttributesAdminComponent', 'selector': 'attributes-admin'},{'name': 'HomeComponent', 'selector': 'home'},{'name': 'MenuComponent', 'selector': 'menu'},{'name': 'NotFoundComponent', 'selector': 'not-found'},{'name': 'ProjectAdminAttributeCreatorComponent', 'selector': 'projects-admin-attribute-creator'},{'name': 'ProjectsAdminComponent', 'selector': 'projects-admin'},{'name': 'ProjectsAdminCreatorComponent', 'selector': 'projects-admin-creator'},{'name': 'ProjectsAdminDetailComponent', 'selector': 'projects-admin-detail'},{'name': 'ProjectsAdminVueComponent', 'selector': 'projects-admin-vue'},{'name': 'SettingsComponent', 'selector': 'settings'}];
+        var COMPONENT_TEMPLATE = '<div><div id="attributes-admin">  <h1>Attributes administration dashboard</h1>  <p>Here you can have a global overview on every attributes.</p></div><h2>List of all attributes</h2><filter-search [searchText]=\'searchText\' (searchTextChangeEvent)=\'onSearchTextChange($event)\'></filter-search><table>  <tr>    <th>Id</th><th>Name</th><th>Value</th><th>Type</th>  </tr>  <tr *ngFor=\'let attribute of attributes | searchFilter: searchText\'>  <td>{{attribute.id}}</td><td>{{attribute.name}}</td><td>{{attribute.value}}</td><td>{{attribute.valueType}}</td>  </tr></table><router-outlet></router-outlet></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AttributesAdminComponent', 'selector': 'attributes-admin'},{'name': 'FilterSearchComponent', 'selector': 'filter-search'},{'name': 'HomeComponent', 'selector': 'home'},{'name': 'MenuComponent', 'selector': 'menu'},{'name': 'NotFoundComponent', 'selector': 'not-found'},{'name': 'ProjectAdminAttributeCreatorComponent', 'selector': 'projects-admin-attribute-creator'},{'name': 'ProjectsAdminComponent', 'selector': 'projects-admin'},{'name': 'ProjectsAdminCreatorComponent', 'selector': 'projects-admin-creator'},{'name': 'ProjectsAdminDetailComponent', 'selector': 'projects-admin-detail'},{'name': 'ProjectsAdminVueComponent', 'selector': 'projects-admin-vue'},{'name': 'SettingsComponent', 'selector': 'settings'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'AttributesAdminComponent'};
 </script>
